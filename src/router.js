@@ -12,7 +12,7 @@ const routes = [
     },
     {
         path: '/photo',
-        component: () => import('./pages/PhotoPages') //lazy loading import
+        component: () => import('./pages/PhotosPage') //lazy loading import
     }
 ]
 
