@@ -2,11 +2,14 @@
     <v-container>
         <!--    v-for аналог map в React    -->
         <!--   привязываем пропс к компоненте  v-bind:photo="photo"  -->
-        <Photo
-                v-bind:key="photo"
-                v-bind:photo="photo"
-                v-for="photo in photos"
-        />
+        <!--   <v-row> что бы могли создавать колонки для форматирования-->
+        <v-row>
+            <Photo
+                    v-bind:key="photo"
+                    v-bind:photo="photo"
+                    v-for="photo in photos"
+            />
+        </v-row>
     </v-container>
 </template>
 
@@ -18,14 +21,19 @@
         components: {Photo},
         //работа с данными, функция которая возвращает данные
         data: () => ({
-            photos: [
-                {id: 1, title: 'Foto 1'},
-                {id: 2, title: 'Foto 2'},
-                {id: 3, title: 'Foto 3'},
-                {id: 4, title: 'Foto 4'},
-                {id: 5, title: 'Foto 5'},
-            ]
-        })
+            photos: []
+        }),
+        mounted() {
+            this.fetchTodo()
+        },
+        //инкапсулируем логику в отдельную функцию
+        methods: {
+            fetchTodo() {
+                //добавляем лимит по фото с помощью query параметра
+                this.axios.get('https://jsonplaceholder.typicode.com/photos?_limit=10')
+                    .then(response => this.photos = response.data)
+            }
+        }
     }
 </script>
 
