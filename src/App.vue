@@ -1,5 +1,8 @@
 <template>
-    <Navbar/>
+    <v-app>
+        <Navbar/>
+        <router-view/>
+    </v-app>
 </template>
 
 <script>
@@ -8,9 +11,5 @@
     export default {
         name: 'App',
         components: {Navbar}, //регистрируем компонент Navbar
-
-        data: () => ({
-            //
-        }),
     };
 </script>

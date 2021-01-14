@@ -1,6 +1,5 @@
 <template>
-    <v-app>
-        <v-container fluid> <!--  fluid - файл растянеться на всю ширину-->
+        <v-container fluid > <!--  fluid - файл растянеться на всю ширину-->
             <v-app-bar
                     color="teal"
                     dark
@@ -10,7 +9,6 @@
                 <v-btn outlined class="ml-5">Главная</v-btn>
             </v-app-bar>
         </v-container>
-    </v-app>
 </template>
 
 <script>
