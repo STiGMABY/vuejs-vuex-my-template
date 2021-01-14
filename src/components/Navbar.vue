@@ -5,8 +5,16 @@
                     dark
             >
                 <v-spacer/>  <!--заполнит все пространство справа и сдвинет кнопки влево-->
-                <v-btn outlined class="ml-5">Логин</v-btn>
-                <v-btn outlined class="ml-5">Главная</v-btn>
+                <v-btn outlined class="ml-5">
+                    <router-link to="/">
+                        Главная
+                    </router-link>
+                </v-btn>
+                <v-btn outlined class="ml-5">
+                    <router-link to="/photo">
+                        Фотографии
+                    </router-link>
+                </v-btn>
             </v-app-bar>
         </v-container>
 </template>
