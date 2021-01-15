@@ -18,6 +18,7 @@
 </template>
 
 <script>
+    import {mapMutations} from 'vuex'
     export default {
         name: "Photo",
         //Указываем пропсы которые будет прокидываться в этот компонет
@@ -29,10 +30,13 @@
             }
         },
         methods: {
+            ...mapMutations(['setCurrentPhoto', "showDialog", "hideDialog"]),
             openPhoto(){
                 //поскольку управление видимостью окна находиться в родиьельском компоненту нам необходимо заэмитить событие через this
                 //первый параметр название события, вторым текущее фото
-                this.$emit('openPhoto', this.photo)
+                //this.$emit('openPhoto', this.photo)
+                this.setCurrentPhoto(this.photo)
+                this.showDialog()
             }
         }
     }

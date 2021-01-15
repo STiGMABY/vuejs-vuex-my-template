@@ -12,13 +12,12 @@
         <v-row>
             <Photo
                     v-bind:key="photo"
-                    v-bind:photo="photo"
-                    v-for="photo in photos"
-                    @openPhoto="openPhoto"
+                    :photo="photo"
+                    v-for="photo in $store.getters.getAllPhotos"
             />
         </v-row>
         <!-- объект photo передаем, как пропс -->
-        <PhotoDialog :photo="currentPhoto" v-model="dialogVisible"/>
+        <PhotoDialog />
     </v-container>
 </template>
 
@@ -26,6 +25,7 @@
     import Photo from "@/components/photo/Photo";
     import PhotoForm from "@/components/photo/PhotoForm";
     import PhotoDialog from "@/components/photo/PhotoDialog";
+    import {mapActions} from 'vuex'
 
     export default {
         name: "PhotoPage",
@@ -33,14 +33,19 @@
         //работа с данными, функция которая возвращает данные
         data: () => ({
             photos: [],
-            currentPhoto: {},
-            dialogVisible: false //прокидываем в компоненту PhotoDialog
+            // currentPhoto: {},
+            // dialogVisible: false //прокидываем в компоненту PhotoDialog
         }),
         mounted() {
             //this.fetchTodo()
+
+            //воспользуемся состояние и функциями которые мы сделали в photoModule
+            //передаем параметром название экшенаа
+            this.fetchPhotos()
         },
         //инкапсулируем логику в отдельную функцию
         methods: {
+            ...mapActions(['fetchPhotos']),
             // fetchTodo() {
             //     //добавляем лимит по фото с помощью query параметра
             //     this.axios.get('https://jsonplaceholder.typicode.com/photos?_limit=10')
