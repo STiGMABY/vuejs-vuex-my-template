@@ -1,7 +1,11 @@
 <template>
     <v-container>
         <!-- @addPhoto - название заимеченого события (PhotoForm строка 48), затем функция которая вызывается-->
-        <PhotoForm @addPhoto="addPhoto"/>
+        <!-- v-if v-else- аналог тернарного оператора -->
+        <!-- v-show - для скрытия элементов. При скрытие компонент остаеться в DOM -->
+        <PhotoForm v-if="photos.length < 11" @addPhoto="addPhoto"/>
+        <div v-else>вы не можете добавить больше фото</div>
+
         <!--    v-for аналог map в React    -->
         <!--   привязываем пропс к компоненте  v-bind:photo="photo"  -->
         <!--   <v-row> что бы могли создавать колонки для форматирования-->
