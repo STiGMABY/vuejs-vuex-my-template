@@ -37,15 +37,15 @@
             dialogVisible: false //прокидываем в компоненту PhotoDialog
         }),
         mounted() {
-            this.fetchTodo()
+            //this.fetchTodo()
         },
         //инкапсулируем логику в отдельную функцию
         methods: {
-            fetchTodo() {
-                //добавляем лимит по фото с помощью query параметра
-                this.axios.get('https://jsonplaceholder.typicode.com/photos?_limit=10')
-                    .then(response => this.photos = response.data)
-            },
+            // fetchTodo() {
+            //     //добавляем лимит по фото с помощью query параметра
+            //     this.axios.get('https://jsonplaceholder.typicode.com/photos?_limit=10')
+            //         .then(response => this.photos = response.data)
+            // },
             addPhoto(photo){
                 //добавляем в массив photos, объект после нажатия кнопки "Добавить" (PhotoForm)
                 //эту функццию нужно привязать к компонету PhotoForm
