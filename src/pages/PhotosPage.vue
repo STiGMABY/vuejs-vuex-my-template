@@ -10,21 +10,27 @@
                     v-bind:key="photo"
                     v-bind:photo="photo"
                     v-for="photo in photos"
+                    @openPhoto="openPhoto"
             />
         </v-row>
+        <!-- объект photo передаем, как пропс -->
+        <PhotoDialog :photo="currentPhoto" v-model="dialogVisible"/>
     </v-container>
 </template>
 
 <script>
     import Photo from "@/components/photo/Photo";
     import PhotoForm from "@/components/photo/PhotoForm";
+    import PhotoDialog from "@/components/photo/PhotoDialog";
 
     export default {
         name: "PhotoPage",
-        components: {PhotoForm, Photo},
+        components: {PhotoDialog, PhotoForm, Photo},
         //работа с данными, функция которая возвращает данные
         data: () => ({
-            photos: []
+            photos: [],
+            currentPhoto: {},
+            dialogVisible: false //прокидываем в компоненту PhotoDialog
         }),
         mounted() {
             this.fetchTodo()
@@ -40,6 +46,13 @@
                 //добавляем в массив photos, объект после нажатия кнопки "Добавить" (PhotoForm)
                 //эту функццию нужно привязать к компонету PhotoForm
                 this.photos.unshift(photo)
+            },
+            openPhoto(photo) {
+                //полученую через параметры фотографию присваиваем этому объекту
+                //фото будем сохранять в объект объявленый внутри компонента, строка 30
+                this.currentPhoto = photo
+                //при нажатии на фото меняем dialogVisible на true
+                this.dialogVisible = true
             }
         }
     }
