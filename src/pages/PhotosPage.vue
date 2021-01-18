@@ -47,6 +47,7 @@
         methods: {
             ...mapActions(['fetchPhotos']),
             ///2323232342
+            //dkfhdjh
             // fetchTodo() {
             //     //добавляем лимит по фото с помощью query параметра
             //     this.axios.get('https://jsonplaceholder.typicode.com/photos?_limit=10')
